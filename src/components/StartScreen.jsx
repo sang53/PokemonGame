@@ -33,7 +33,7 @@ function PokedexSelector({ currDex, changeDex }) {
   const dexOptions = pokedexArr ? (
     pokedexArr.map((pokedex) => {
       return (
-        <option key={pokedex.id} value={pokedex.id}>
+        <option key={pokedex.id} value={pokedex.idx}>
           {pokedex.name}
         </option>
       );

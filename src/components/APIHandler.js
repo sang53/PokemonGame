@@ -9,7 +9,7 @@ export const APIHandler = (() => {
     // prevent reload of pokedex data in race conditions
     if (pokedex) return;
     pokedex = data.results.map(
-      (dexObj) => new Pokedex(dexObj.name, dexObj.url),
+      (dexObj, idx) => new Pokedex(dexObj.name, dexObj.url, idx),
     );
   }
 
@@ -83,9 +83,10 @@ export const APIHandler = (() => {
 
 export class Pokedex {
   pokemonIds = [];
-  constructor(name, url) {
+  constructor(name, url, idx) {
     this.name = this.#capitalise(name);
     this.id = this.#getId(url);
+    this.idx = idx;
   }
 
   #capitalise(name) {
