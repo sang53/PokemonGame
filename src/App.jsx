@@ -12,7 +12,6 @@ function App() {
   const [gameStage, setGameStage] = useState(0);
   const [currDex, setCurrDex] = useState(false);
   const [pokemon, setPokemon] = useState([]);
-  const [numDisplay, setNumDisplay] = useState(0);
   const [history, setHistory] = useState([]);
   const [hScore, setHScore] = useState(0);
 
@@ -23,7 +22,6 @@ function App() {
       await APIHandler.loadDex(DEFAULT_DEX);
       // re-render with proper random pokemon ids once pokedex information is loaded
       setPokemon(APIHandler.getRandomIds(DEFAULT_POKENUM, DEFAULT_DEX));
-      setNumDisplay(DEFAULT_DISPLAYNUM);
     }
     initPokedex();
   }, []);
@@ -36,11 +34,6 @@ function App() {
 
   function changeTotal(num) {
     if (pokemon.length) setPokemon(APIHandler.getRandomIds(num, currDex));
-  }
-
-  function changeNum(num) {
-    if (num <= pokemon.length) setNumDisplay(num);
-    else setNumDisplay(pokemon.length);
   }
 
   function reshuffle() {
@@ -70,15 +63,13 @@ function App() {
 
   const initProps = {
     changeTotal,
-    changeNum,
-    numDisplay,
     currDex,
     changeDex,
     pokemon,
     progressGame,
     reshuffle,
   };
-  const gameProps = { pokemon, numDisplay, addHistory, history };
+  const gameProps = { pokemon, addHistory, history, numDisplay: DEFAULT_DISPLAYNUM };
   const endProps = { history, hScore, progressGame };
 
   switch (gameStage) {

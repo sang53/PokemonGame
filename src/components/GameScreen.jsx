@@ -8,6 +8,7 @@ export default function GameScreen({
   addHistory,
   history,
 }) {
+  // returns numDisplay number of randomly selected pokemon from current pool
   function getDisplay() {
     return pokemon.toSorted(() => Math.random() - 0.5).slice(0, numDisplay);
   }

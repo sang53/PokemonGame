@@ -9,10 +9,6 @@ export default function StartScreen(props) {
       <h1 id="title">Pokémon Memory Game</h1>
       <div id="selectors" className="flex">
         <PokedexSelector changeDex={props.changeDex} currDex={props.currDex} />
-        <NumDisplaySelector
-          changeNum={props.changeNum}
-          numDisplay={props.numDisplay}
-        />
         <TotalSelector
           pokemon={props.pokemon}
           changeTotal={props.changeTotal}
@@ -45,7 +41,7 @@ function PokedexSelector({ currDex, changeDex }) {
 
   return (
     <div className="flex">
-      <label>Select Pokedex:</label>
+      <label>Select Pokédex:</label>
       <select
         name="pokedex"
         id="pokedex-select"
@@ -58,24 +54,10 @@ function PokedexSelector({ currDex, changeDex }) {
   );
 }
 
-function NumDisplaySelector({ numDisplay, changeNum }) {
-  return (
-    <div className="flex">
-      <label>Number of Displayed Pokemon:</label>
-      <input
-        type="number"
-        min="10"
-        value={numDisplay}
-        onChange={(e) => changeNum(e.target.value)}
-      />
-    </div>
-  );
-}
-
 function TotalSelector({ pokemon, changeTotal }) {
   return (
     <div className="flex">
-      <label>Total Pokemon:</label>
+      <label>Total Pokémon:</label>
       <input
         type="number"
         min="10"
@@ -102,10 +84,6 @@ PokedexSelector.propTypes = {
   changeDex: PropTypes.func,
 }
 
-NumDisplaySelector.propTypes = {
-  numDisplay: PropTypes.number,
-  changeNum: PropTypes.func,
-}
 
 TotalSelector.propTypes = {
   pokemon: PropTypes.arrayOf(PropTypes.number),
