@@ -1,6 +1,7 @@
 import PokemonContainer from "./PokemonContainer";
 import { APIHandler } from "./APIHandler";
 import "../styles/StartScreen.css";
+import PropTypes from "prop-types";
 
 export default function StartScreen(props) {
   return (
@@ -83,4 +84,30 @@ function TotalSelector({ pokemon, changeTotal }) {
       />
     </div>
   );
+}
+
+StartScreen.propTypes = {
+  changeDex: PropTypes.func,
+  currDex: PropTypes.number,
+  changeNum: PropTypes.func,
+  numDisplay: PropTypes.number,
+  pokemon: PropTypes.arrayOf(PropTypes.number),
+  changeTotal: PropTypes.func,
+  progressGame: PropTypes.func,
+  reshuffle: PropTypes.func
+}
+
+PokedexSelector.propTypes = {
+  currDex: PropTypes.number,
+  changeDex: PropTypes.func,
+}
+
+NumDisplaySelector.propTypes = {
+  numDisplay: PropTypes.number,
+  changeNum: PropTypes.func,
+}
+
+TotalSelector.propTypes = {
+  pokemon: PropTypes.arrayOf(PropTypes.number),
+  changeTotal: PropTypes.func
 }

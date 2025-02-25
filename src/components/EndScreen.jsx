@@ -1,5 +1,6 @@
 import PokemonContainer from "./PokemonContainer";
 import "../styles/EndScreen.css";
+import PropTypes from "prop-types";
 
 export default function EndScreen({ history, hScore, progressGame }) {
   return (
@@ -11,4 +12,10 @@ export default function EndScreen({ history, hScore, progressGame }) {
       <PokemonContainer pokemon={history} />
     </div>
   );
+}
+
+EndScreen.propTypes = {
+  history: PropTypes.arrayOf(PropTypes.number),
+  hScore: PropTypes.number,
+  progressGame: PropTypes.func
 }

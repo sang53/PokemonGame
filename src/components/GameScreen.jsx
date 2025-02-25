@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import "../styles/GameScreen.css";
 import PokemonContainer from "./PokemonContainer";
 
@@ -19,4 +20,11 @@ export default function GameScreen({
       <PokemonContainer pokemon={getDisplay()} addHistory={addHistory} />
     </div>
   );
+}
+
+GameScreen.propTypes = {
+  pokemon: PropTypes.arrayOf(PropTypes.number),
+  numDisplay: PropTypes.number,
+  addHistory: PropTypes.func,
+  history: PropTypes.arrayOf(PropTypes.number)
 }

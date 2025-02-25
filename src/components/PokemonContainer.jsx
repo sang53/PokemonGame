@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import "../styles/CardContainer.css";
 import Pokemon from "./Card";
 
@@ -16,4 +17,9 @@ export default function PokemonContainer({ pokemon, addHistory }) {
       {output}
     </div>
   );
+}
+
+PokemonContainer.propTypes = {
+  pokemon: PropTypes.arrayOf(PropTypes.number),
+  addHistory: PropTypes.func
 }

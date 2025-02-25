@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import { APIHandler } from "./APIHandler";
 import { useState, useEffect } from "react";
 
@@ -26,4 +27,9 @@ export default function Pokemon({ id, addHistory }) {
       <p className="types">Types: {isLoaded && pokemon.types.join(", ")}</p>
     </div>
   );
+}
+
+Pokemon.propTypes = {
+  id: PropTypes.number,
+  addHistory: PropTypes.func
 }
