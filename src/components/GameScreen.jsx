@@ -27,5 +27,5 @@ GameScreen.propTypes = {
   pokemon: PropTypes.arrayOf(PropTypes.number),
   numDisplay: PropTypes.number,
   addHistory: PropTypes.func,
-  history: PropTypes.arrayOf(PropTypes.number)
-}
+  history: PropTypes.arrayOf(PropTypes.number),
+};

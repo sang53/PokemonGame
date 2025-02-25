@@ -21,5 +21,5 @@ export default function PokemonContainer({ pokemon, addHistory }) {
 
 PokemonContainer.propTypes = {
   pokemon: PropTypes.arrayOf(PropTypes.number),
-  addHistory: PropTypes.func
-}
+  addHistory: PropTypes.func,
+};

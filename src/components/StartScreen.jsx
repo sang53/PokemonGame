@@ -76,16 +76,15 @@ StartScreen.propTypes = {
   pokemon: PropTypes.arrayOf(PropTypes.number),
   changeTotal: PropTypes.func,
   progressGame: PropTypes.func,
-  reshuffle: PropTypes.func
-}
+  reshuffle: PropTypes.func,
+};
 
 PokedexSelector.propTypes = {
   currDex: PropTypes.number,
   changeDex: PropTypes.func,
-}
-
+};
 
 TotalSelector.propTypes = {
   pokemon: PropTypes.arrayOf(PropTypes.number),
-  changeTotal: PropTypes.func
-}
+  changeTotal: PropTypes.func,
+};

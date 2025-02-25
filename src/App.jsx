@@ -53,11 +53,14 @@ function App() {
     }
   }
 
+  // re-shuffle through re-render if called with no arguments
+  // add selected pokemon to history & check if already selected
   function addHistory(id) {
     if (!id) return setHistory([...history]);
 
     const numId = +id.slice(8);
-    if (history.includes(numId)) progressGame();
+    if (history.includes(numId) || history.length === pokemon.length - 1)
+      progressGame();
     setHistory([...history, numId]);
   }
 
@@ -69,8 +72,13 @@ function App() {
     progressGame,
     reshuffle,
   };
-  const gameProps = { pokemon, addHistory, history, numDisplay: DEFAULT_DISPLAYNUM };
-  const endProps = { history, hScore, progressGame };
+  const gameProps = {
+    pokemon,
+    addHistory,
+    history,
+    numDisplay: DEFAULT_DISPLAYNUM,
+  };
+  const endProps = { history, hScore, progressGame, total: pokemon.length };
 
   switch (gameStage) {
     case 0:

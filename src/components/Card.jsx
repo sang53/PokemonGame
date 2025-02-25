@@ -31,5 +31,5 @@ export default function Pokemon({ id, addHistory }) {
 
 Pokemon.propTypes = {
   id: PropTypes.number,
-  addHistory: PropTypes.func
-}
+  addHistory: PropTypes.func,
+};
