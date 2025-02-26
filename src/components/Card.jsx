@@ -24,7 +24,7 @@ export default function Pokemon({ id, addHistory }) {
     >
       <h2 className="name">{pokemon.name}</h2>
       {isLoaded && <img src={pokemon.imgsrc} className="image" />}
-      <p className="types">Types: {isLoaded && pokemon.types.join(", ")}</p>
+      <p className="types">{isLoaded && pokemon.types.join(", ")}</p>
     </div>
   );
 }

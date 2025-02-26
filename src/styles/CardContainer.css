@@ -30,21 +30,25 @@
   box-shadow: 4px 3px 6px #27272a;
   transition: transform 300ms;
   cursor: pointer;
+  user-select: none;
 
   > .image {
     max-width: 100%;
     border-block: 1px solid black;
     border-radius: 3px;
+    -webkit-user-drag: none;
   }
 
   > .name {
     font-size: 20px;
-    font-weight: 500;
+    font-weight: 700;
+    padding-block: 3px;
   }
 
   > .types {
     font-style: italic;
     font-size: 14px;
+    padding-block: 3px;
   }
 
   &:hover {
