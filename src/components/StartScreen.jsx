@@ -61,8 +61,11 @@ function TotalSelector({ pokemon, changeTotal }) {
       <input
         type="number"
         min="10"
-        value={pokemon.length}
-        onChange={(e) => changeTotal(e.target.value)}
+        defaultValue={pokemon.length}
+        onBlur={(e) => {
+          if (e.target.value < 10) e.target.value = 10;
+          changeTotal(e.target.value);
+        }}
       />
     </div>
   );
