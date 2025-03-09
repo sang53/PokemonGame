@@ -10,6 +10,7 @@ export default function StartScreen(props) {
       <div id="selectors" className="flex">
         <PokedexSelector changeDex={props.changeDex} currDex={props.currDex} />
         <TotalSelector
+          currDex={props.currDex}
           pokemon={props.pokemon}
           changeTotal={props.changeTotal}
         />
@@ -54,16 +55,20 @@ function PokedexSelector({ currDex, changeDex }) {
   );
 }
 
-function TotalSelector({ pokemon, changeTotal }) {
+function TotalSelector({ pokemon, changeTotal, currDex }) {
   return (
     <div className="flex">
       <label>Total Pokémon:</label>
       <input
         type="number"
         min="10"
-        defaultValue={pokemon.length}
+        defaultValue={pokemon.length ? pokemon.length : 30}
         onBlur={(e) => {
+          e.target.value = parseInt(e.target.value);
+          if (parseInt(e.target.value) === pokemon.length) return;
           if (e.target.value < 10) e.target.value = 10;
+          else if (e.target.value > APIHandler.getMax(currDex))
+            e.target.value = APIHandler.getMax(currDex);
           changeTotal(e.target.value);
         }}
       />
@@ -90,4 +95,5 @@ PokedexSelector.propTypes = {
 TotalSelector.propTypes = {
   pokemon: PropTypes.arrayOf(PropTypes.number),
   changeTotal: PropTypes.func,
+  currDex: PropTypes.number,
 };

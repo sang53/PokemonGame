@@ -4,12 +4,12 @@ export const APIHandler = (() => {
 
   async function init() {
     const data = await handleFetch(
-      "https://pokeapi.co/api/v2/pokedex?limit=50",
+      "https://pokeapi.co/api/v2/pokedex?limit=50"
     );
     // prevent reload of pokedex data in race conditions
     if (pokedex) return;
     pokedex = data.results.map(
-      (dexObj, idx) => new Pokedex(dexObj.name, dexObj.url, idx),
+      (dexObj, idx) => new Pokedex(dexObj.name, dexObj.url, idx)
     );
   }
 
@@ -24,7 +24,7 @@ export const APIHandler = (() => {
       if (!pokemon.has(id)) {
         const pokemonObj = new Pokemon(
           jsonObj.pokemon_species.name,
-          jsonObj.pokemon_species.url,
+          jsonObj.pokemon_species.url
         );
         pokemon.set(id, pokemonObj);
       }
@@ -71,6 +71,10 @@ export const APIHandler = (() => {
     return pokemon.get(id);
   }
 
+  function getMax(currIdx) {
+    return pokedex[currIdx].pokemonIds.length;
+  }
+
   return {
     init,
     loadPokemon,
@@ -78,10 +82,11 @@ export const APIHandler = (() => {
     loadDex,
     getAllPokedex,
     getPokemon,
+    getMax,
   };
 })();
 
-export class Pokedex {
+class Pokedex {
   pokemonIds = [];
   constructor(name, url, idx) {
     this.name = this.#capitalise(name);
@@ -105,7 +110,7 @@ export class Pokedex {
   }
 }
 
-export class Pokemon {
+class Pokemon {
   loaded = false;
   types = null;
   imgsrc = null;
