@@ -1,7 +1,7 @@
 ## **Pokémon Memory Game**
 
-_Portfolio link: https://portfolio-sang-won-cho.netlify.app/_
-_Deployed link: https://sang53-pokemon-memory.netlify.app/_
+_[Portfolio link](https://sang53.github.io/)_
+_[Deployed link](https://sang53.github.io/PokemonGame)_
 
 This project was made as part of The Odin Project to learn React & API data fetching.
 
