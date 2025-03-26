@@ -2,7 +2,13 @@ import PokemonContainer from "./PokemonContainer";
 import "../styles/EndScreen.css";
 import PropTypes from "prop-types";
 
-export default function EndScreen({ history, hScore, progressGame, total }) {
+export default function EndScreen({
+  history,
+  hScore,
+  progressGame,
+  total,
+  everHScore,
+}) {
   const message =
     total === history.length - 1
       ? "You Win!"
@@ -15,16 +21,27 @@ export default function EndScreen({ history, hScore, progressGame, total }) {
   return (
     <div className="flex" id="main">
       <h1>{message}</h1>
-      <div id="scores">
-        <h1 id="end-score">
-          <b>Score: </b>
-          {history.length - 1} / {total}
-        </h1>
-        <h1 id="hscore">
-          <b>High Score: </b>
-          {hScore}
-        </h1>
-        {history.length - 1 === hScore && <span id="new">New High Score!</span>}
+      <div id="scoreContainer">
+        <div id="scores">
+          <h1 id="end-score">
+            <b>Score: </b>
+            {history.length - 1} / {total}
+          </h1>
+          <h1 id="hscore">
+            <b>High Score: </b>
+            {hScore}
+          </h1>
+          <h1 id="everScore">
+            <b>Highest Ever Score: </b>
+            {everHScore.current}
+          </h1>
+        </div>
+        <div id="new">
+          {history.length - 1 === everHScore.current && (
+            <span>New Highest Ever!</span>
+          )}
+          {history.length - 1 === hScore && <span>New High Score!</span>}
+        </div>
       </div>
 
       <button onClick={progressGame}>Back to Start</button>
@@ -41,4 +58,5 @@ EndScreen.propTypes = {
   hScore: PropTypes.number,
   progressGame: PropTypes.func,
   total: PropTypes.number,
+  everHScore: PropTypes.objectOf({ current: PropTypes.number }),
 };

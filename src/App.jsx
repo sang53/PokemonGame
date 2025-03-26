@@ -3,6 +3,7 @@ import StartScreen from "./components/StartScreen";
 import GameScreen from "./components/GameScreen";
 import EndScreen from "./components/EndScreen";
 import { APIHandler } from "./components/APIHandler";
+import { useStorage } from "./hooks/useStorage";
 
 const DEFAULT_DEX = 3;
 const DEFAULT_POKENUM = 30;
@@ -13,7 +14,7 @@ function App() {
   const [currDex, setCurrDex] = useState(false);
   const [pokemon, setPokemon] = useState([]);
   const [history, setHistory] = useState([]);
-  const [hScore, setHScore] = useState(0);
+  const [hScore, updateHScore, everHScore] = useStorage();
 
   useEffect(() => {
     async function initPokedex() {
@@ -44,7 +45,7 @@ function App() {
     setGameStage(gameStage + 1);
     switch (gameStage) {
       case 1:
-        if (history.length > hScore) setHScore(history.length);
+        updateHScore(history.length);
         break;
       case 2:
         setHistory([]);
@@ -78,7 +79,13 @@ function App() {
     history,
     numDisplay: DEFAULT_DISPLAYNUM,
   };
-  const endProps = { history, hScore, progressGame, total: pokemon.length };
+  const endProps = {
+    history,
+    hScore,
+    progressGame,
+    total: pokemon.length,
+    everHScore,
+  };
 
   switch (gameStage) {
     case 0:
