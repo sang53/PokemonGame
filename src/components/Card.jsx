@@ -23,7 +23,9 @@ export default function Pokemon({ id, addHistory }) {
       onClick={addHistory && ((e) => addHistory(e.currentTarget.id))}
     >
       <h2 className="name">{pokemon.name}</h2>
-      {isLoaded && <img src={pokemon.imgsrc} className="image" />}
+      {isLoaded && (
+        <img src={pokemon.imgsrc} className="image" height="118" width="118" />
+      )}
       <p className="types">{isLoaded && pokemon.types.join(", ")}</p>
     </div>
   );
