@@ -1,11 +1,11 @@
 #pokemon-container {
   --card-size: 160px;
 
-  @media (max-width: 1850px) {
+  @media (max-width: 1800px) {
     --card-size: 140px;
   }
 
-  @media (max-width: 1000px) {
+  @media (max-width: 1600px) {
     --card-size: 121px;
   }
 
