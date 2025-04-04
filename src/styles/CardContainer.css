@@ -1,6 +1,22 @@
 #pokemon-container {
-  width: calc(10 * 121px + 9 * 0.5rem + 2 * 1rem + 4px)
+  --card-size: 160px;
+
+  @media (max-width: 1850px) {
+    --card-size: 140px;
+  }
+
+  @media (max-width: 1000px) {
+    --card-size: 121px;
+  }
+
+  @media (max-width: 450px) {
+    --card-size: 110px;
+    /* 3 cards in a row */
+  }
+
+  width: calc(10 * var(--card-size) + 9 * 0.5rem + 2 * 1rem + 4px)
     /* fit 10 cards in 1 row */;
+
   max-width: 100%;
   flex-wrap: wrap;
   border: 2px solid black;
@@ -25,7 +41,7 @@
   border: 1px solid black;
   flex-direction: column;
   align-items: center;
-  width: 121px;
+  width: var(--card-size);
   gap: 0.25rem;
   padding-block: 0.25rem;
   border-radius: 5px;
@@ -35,15 +51,11 @@
   cursor: pointer;
   user-select: none;
 
-  @media (max-width: 450px) {
-    width: 110px;
-    /* 3 cards in a row */
-  }
-
   > .image {
     border-block: 1px solid black;
     -webkit-user-drag: none;
     height: auto;
+    width: 100%;
   }
 
   > .name {
