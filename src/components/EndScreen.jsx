@@ -37,10 +37,10 @@ export default function EndScreen({
           </h1>
         </div>
         <div id="new">
+          {history.length - 1 === hScore && <span>New High Score!</span>}
           {history.length - 1 === everHScore.current && (
             <span>New Highest Ever!</span>
           )}
-          {history.length - 1 === hScore && <span>New High Score!</span>}
         </div>
       </div>
 
